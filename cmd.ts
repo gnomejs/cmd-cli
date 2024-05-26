@@ -17,7 +17,7 @@ pathFinder.set("cmd", {
 export const CMD_EXT = ".cmd";
 
 /**
- * Represents a cmd command executed using the `cmd` commandline.
+ * Represents a  windows cmd cli command executed using the `cmd` executable.
  */
 export class CmdCliCommand extends ShellCommand {
     /**
@@ -81,11 +81,11 @@ ${script}
 }
 
 /**
- * Executes a cmd script using the cmdCommand class.
+ * Executes a windows command line (.cmd, .bat) script using the CmdCliCommand class.
  *
  * @param script - The cmd script to execute.
  * @param options - Optional options for the cmd command.
- * @returns A new instance of the cmdCommand class.
+ * @returns A new instance of the CmdCliCommand class.
  */
 export function cmd(script: string, options?: ShellCommandOptions): CmdCliCommand {
     return new CmdCliCommand(script, options);

@@ -9,7 +9,7 @@
 ## Overview
 
 The `cmd-cli` module provides a simple way to execute
-cmd scripts or files.
+windows command line scripts or files.
 
 The module relies upon the @gnome/exec module and
 has the same basic usage as the `Command` and `ShellCommand` class.
