@@ -45,6 +45,8 @@ Deno.test({
         try {
             // purposely add space after test.ps1
             const cmd1 = await cmd("test.cmd ");
+            console.log(cmd1.errorText());
+            console.log(cmd1.text());
             equals(cmd1.code, 0);
             equals(cmd1.text(), "Hello, World!\r\n");
         } finally {
