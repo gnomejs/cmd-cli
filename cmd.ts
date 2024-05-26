@@ -52,6 +52,9 @@ ${script}
                 suffix: this.ext,
             });
 
+            console.log(file);
+            console.log(script);
+
             writeTextFileSync(file, script);
             return { file, generated: true };
         }
@@ -70,6 +73,8 @@ ${script}
         const params = this.shellArgs ?? ["/D", "/E:ON", "/V:OFF", "/S", "/C"];
 
         params.push(`CALL "${script}"`);
+
+        console.log(params);
 
         return params;
     }
