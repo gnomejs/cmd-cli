@@ -41,15 +41,19 @@ Deno.test({
     name: "simple file test",
     ignore: !WINDOWS,
     fn: async () => {
-        await writeTextFile("test.cmd", `
+        await writeTextFile(
+            "test.cmd",
+            `
         @echo off
-        echo Hello, World!`);
+        echo Hello, World!`,
+        );
         try {
             const p = resolve("test.cmd");
             const exists = await isFile(p);
 
-            if (!exists)
+            if (!exists) {
                 throw new Error("File does not exist at " + p);
+            }
 
             // purposely add space after test.ps1
             const cmd1 = await cmd("test.cmd ");

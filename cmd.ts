@@ -1,9 +1,8 @@
 import { ShellCommand, type ShellCommandOptions } from "@gnome/exec";
 import { pathFinder } from "@gnome/exec/path-finder";
 import { WINDOWS } from "@gnome/os-constants";
-import { writeTextFileSync, makeTempFileSync } from "@gnome/fs";
-import { isAbsolute } from "jsr:@std/path@^0.224.0/is-absolute";
-import { resolve } from "jsr:@std/path@^0.224.0/resolve";
+import { makeTempFileSync, writeTextFileSync } from "@gnome/fs";
+import { isAbsolute, resolve } from "@std/path";
 
 pathFinder.set("cmd", {
     name: "cmd",
@@ -53,10 +52,6 @@ ${script}
                 suffix: this.ext,
             });
 
-            console.log(file);
-            console.log(script);
-
-
             writeTextFileSync(file, script);
             return { file, generated: true };
         }
@@ -80,8 +75,6 @@ ${script}
         const params = this.shellArgs ?? ["/D", "/E:ON", "/V:OFF", "/S", "/C"];
 
         params.push(`CALL`, script);
-
-        console.log(params);
 
         return params;
     }

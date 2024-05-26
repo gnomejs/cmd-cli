@@ -1,6 +1,6 @@
 /**
- * The `bash` module provides a simple way to execute
- * PowerShell Core scripts using the `bash` shell.
+ * The `cmd` module provides a simple way to execute
+ * cmd scripts using the `cmd` shell.
  *
  * The module relies upon the @gnome/exec module and
  * has the same basic usage as the `Command` and `ShellCommand` class.
