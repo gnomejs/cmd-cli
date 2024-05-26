@@ -72,7 +72,7 @@ ${script}
     getShellArgs(script: string, isFile: boolean): string[] {
         const params = this.shellArgs ?? ["/D", "/E:ON", "/V:OFF", "/S", "/C"];
 
-        params.push(`CALL`, "${script}");
+        params.push(`CALL`, script);
 
         console.log(params);
 
