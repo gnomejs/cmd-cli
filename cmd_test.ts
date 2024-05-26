@@ -52,7 +52,7 @@ Deno.test({
                 throw new Error("File does not exist at " + p);
 
             // purposely add space after test.ps1
-            const cmd1 = await cmd("test.cmd ", { stdout: "piped", stderr: "piped", cwd: "." });
+            const cmd1 = await cmd("test.cmd ");
             console.log(cmd1.errorText());
             console.log(cmd1.text());
             equals(cmd1.code, 0);
