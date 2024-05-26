@@ -2,6 +2,8 @@ import { ShellCommand, type ShellCommandOptions } from "@gnome/exec";
 import { pathFinder } from "@gnome/exec/path-finder";
 import { WINDOWS } from "@gnome/os-constants";
 import { writeTextFileSync, makeTempFileSync } from "@gnome/fs";
+import { isAbsolute } from "jsr:@std/path@^0.224.0/is-absolute";
+import { resolve } from "jsr:@std/path@^0.224.0/resolve";
 
 pathFinder.set("cmd", {
     name: "cmd",
@@ -57,6 +59,11 @@ ${script}
 
             writeTextFileSync(file, script);
             return { file, generated: true };
+        }
+
+        script = script.trimStart();
+        if (!isAbsolute(script)) {
+            script = resolve(script);
         }
 
         return { file: script, generated: false };
