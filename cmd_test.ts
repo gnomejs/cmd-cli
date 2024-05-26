@@ -42,7 +42,7 @@ Deno.test({
     ignore: !WINDOWS,
     fn: async () => {
         await writeTextFile("test.cmd", `
-        set echo off
+        @echo off
         echo Hello, World!`);
         try {
             const p = resolve("test.cmd");
