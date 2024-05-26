@@ -38,6 +38,10 @@ export class CmdCliCommand extends ShellCommand {
         return CMD_EXT;
     }
 
+    /**
+     * Retrieves the script file and indicates whether it was generated or not.
+     * @returns An object containing the file path and a flag indicating if the file was generated.
+     */
     getScriptFile(): { file: string | undefined; generated: boolean } {
         let script = this.script.trimEnd();
 
