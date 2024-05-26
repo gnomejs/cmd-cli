@@ -1,8 +1,7 @@
 import { ShellCommand, type ShellCommandOptions } from "@gnome/exec";
 import { pathFinder } from "@gnome/exec/path-finder";
 import { WINDOWS } from "@gnome/os-constants";
-import { writeTextFileSync } from "@gnome/fs";
-import { makeTempFileSync } from "jsr:@gnome/fs@^0.0.0/node";
+import { writeTextFileSync, makeTempFileSync } from "@gnome/fs";
 
 pathFinder.set("cmd", {
     name: "cmd",
@@ -48,12 +47,13 @@ ${script}
             `;
 
             const file = makeTempFileSync({
-                prefix: "cmd-",
+                prefix: "cmd",
                 suffix: this.ext,
             });
 
             console.log(file);
             console.log(script);
+
 
             writeTextFileSync(file, script);
             return { file, generated: true };

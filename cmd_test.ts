@@ -14,6 +14,15 @@ Deno.test({
 });
 
 Deno.test({
+    name: "simple inline test with options",
+    ignore: !WINDOWS,
+    fn: async () => {
+        const cmd1 = await cmd("echo 'Hello, World!'").run();
+        equals(0, cmd1.code);
+    },
+});
+
+Deno.test({
     name: "multi-line inline test",
     ignore: !WINDOWS,
     fn: async () => {

@@ -33,8 +33,9 @@
     },
     "imports": {
         "@gnome/exec": "jsr:@gnome/exec@^0.4.1",
-        "@gnome/fs": "jsr:@gnome/fs@^0.0.0",
+        "@gnome/fs": "jsr:@gnome/fs@^0.1.0",
         "@gnome/os-constants": "jsr:@gnome/os-constants@^0.0.0",
+        "@std/encoding": "jsr:@std/encoding@^0.224.2",
         "@std/path": "jsr:@std/path@^0.225.1"
     }
 }
