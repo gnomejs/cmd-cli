@@ -2,6 +2,8 @@ import { assertEquals as equals } from "jsr:@std/assert@^0.224.0";
 import { remove, writeTextFile } from "jsr:@gnome/fs@^0.0.0/deno";
 import { cmd } from "./cmd.ts";
 import { WINDOWS } from "@gnome/os-constants";
+import { resolve } from "jsr:@std/path@^0.224.0/resolve";
+import { isFile } from "@gnome/fs";
 
 Deno.test({
     name: "simple inline test",
@@ -43,8 +45,14 @@ Deno.test({
         set echo off
         echo Hello, World!`);
         try {
+            const p = resolve("test.cmd");
+            const exists = await isFile(p);
+
+            if (!exists)
+                throw new Error("File does not exist at " + p);
+
             // purposely add space after test.ps1
-            const cmd1 = await cmd("test.cmd ");
+            const cmd1 = await cmd("test.cmd ", { stdout: "piped", stderr: "piped", cwd: "." });
             console.log(cmd1.errorText());
             console.log(cmd1.text());
             equals(cmd1.code, 0);
