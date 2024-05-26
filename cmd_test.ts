@@ -7,7 +7,7 @@ Deno.test({
     name: "simple inline test",
     ignore: !WINDOWS,
     fn: async () => {
-        const cmd1 = await cmd("echo 'Hello, World!'");
+        const cmd1 = await cmd("echo Hello, World!");
         equals(cmd1.text(), "Hello, World!\r\n");
         equals(0, cmd1.code);
     },
@@ -17,7 +17,7 @@ Deno.test({
     name: "simple inline test with options",
     ignore: !WINDOWS,
     fn: async () => {
-        const cmd1 = await cmd("echo 'Hello, World!'").run();
+        const cmd1 = await cmd("echo Hello, World!").run();
         equals(0, cmd1.code);
     },
 });
@@ -28,7 +28,7 @@ Deno.test({
     fn: async () => {
         const cmd1 = await cmd(`
             set a=1
-            echo '%a%'
+            echo %a%
         `);
         equals(cmd1.text(), "1\r\n");
         equals(0, cmd1.code);
@@ -41,7 +41,7 @@ Deno.test({
     fn: async () => {
         await writeTextFile("test.cmd", `
         set echo off
-        echo 'Hello, World!'`);
+        echo Hello, World!`);
         try {
             // purposely add space after test.ps1
             const cmd1 = await cmd("test.cmd ");
