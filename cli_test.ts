@@ -1,6 +1,6 @@
 import { assertEquals as equals } from "jsr:@std/assert@^0.224.0";
 import { remove, writeTextFile } from "jsr:@gnome/fs@^0.0.0/deno";
-import { cmd } from "./cmd.ts";
+import { cmd } from "./cli.ts";
 import { WINDOWS } from "@gnome/os-constants";
 import { resolve } from "jsr:@std/path@^0.224.0/resolve";
 import { isFile } from "@gnome/fs";
